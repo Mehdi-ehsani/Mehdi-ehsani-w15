@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const Input = ({handleChange, hint}) => {
+const Input = ({changeHandler, value , hint}) => {
   return (
     <div className="input">
       <label htmlFor="input" >
@@ -8,7 +8,8 @@ const Input = ({handleChange, hint}) => {
       <input
         type="text"
         id="input"
-        onChange={handleChange}
+        onChange={changeHandler}
+        value={value}
       />
     </div>
   );
