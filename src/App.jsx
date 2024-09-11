@@ -8,9 +8,10 @@ function App() {
 	const changeHandler = (e) => {
      const searchedValue = e.target.value; 
      setValue(searchedValue);
-     data.map(city => {
-         console.log(city)
-      })
+     data.filter(city => {
+      city.startsWith(searchedValue) && setHint(city)
+     })
+     !searchedValue.length && setHint("")
    };
 
 	return (
