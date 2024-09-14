@@ -8,7 +8,8 @@ function App() {
 	const [hint, setHint] = useState("");
 	const [showHint, setShowHint] = useState(false);
 	useEffect(() => {
-      searchHandler("New York")
+      searchHandler(JSON.parse(localStorage.getItem("cityName")) || "New York");
+	  
    }, []);
 	useEffect(() => {
 		!showHint && setHint("");
@@ -40,6 +41,9 @@ function App() {
          windSpeed: data.list[0].wind.speed,
          weather: data.list[0].weather[0].main,
       })
+	  localStorage.setItem("cityName" , JSON.stringify(data.city.name))
+      setValue("");
+      setHint("")
 	};
 	return (
 		<div>
