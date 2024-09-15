@@ -12,6 +12,7 @@ function App() {
 	const [hint, setHint] = useState("");
 	const [showHint, setShowHint] = useState(false);
 	const [isLoading , setIsLoading] = useState(false)
+	const [isError , setIsError] = useState(false)
 	useEffect(() => {
 		searchHandler(JSON.parse(localStorage.getItem("cityName")) || "New York");
 	}, []);
@@ -47,10 +48,12 @@ function App() {
 				windSpeed: data.list[0].wind.speed,
 				weather: data.list[0].weather[0].main,
 			});
+			localStorage.setItem("cityName", JSON.stringify(data.city.name));
+			setIsError(false)
 		} catch (error) {
-			console.log(error.message)
+			setIsLoading(false)
+			setIsError(true)
 		}
-		localStorage.setItem("cityName", JSON.stringify(data.city.name));
 
 		setValue("");
 		setHint("");
@@ -58,7 +61,7 @@ function App() {
 
 	return (
 		<div>
-			<Card isLoading={isLoading} weatherData={weatherData}>
+			<Card isLoading={isLoading} isError={isError} weatherData={weatherData}>
 				<div className={styles.inputContainer}>
 					<Input value={value} changeHandler={changeHandler} hint={hint} />
 					<button

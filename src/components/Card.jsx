@@ -8,9 +8,10 @@ import snowImg from "../image/snow.png";
 import mistImg from "../image/mist.png";
 import humidityImg from "../image/humidity.png";
 import windImg from "../image/wind.png";
+import errorImg from "../image/lost-connection.png";
 
 
-const Card = ({children , isLoading , weatherData }) => {
+const Card = ({children , isLoading , weatherData , isError }) => {
   const showWeatherImg =(weatherStatus) => {
 		if(weatherStatus) {
 			switch (weatherStatus.toLowerCase()) {
@@ -37,14 +38,21 @@ const Card = ({children , isLoading , weatherData }) => {
 			return clearImg;
 		}
   }
-  if(isLoading) {
+  if(isError) {
     return (
       <div className={styles.card}>
           {children}
-          <h1>
-            loading
-          </h1>
+          <img className={styles.errorImg} src={errorImg} />
       </div>
+
+    )
+  }
+  if(isLoading) {
+    return (
+      <div className={styles.card}>
+      {children}
+      <h1>loading</h1>
+  </div>
     )
   }else {
     return (
