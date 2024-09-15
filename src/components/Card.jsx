@@ -9,6 +9,7 @@ import mistImg from "../image/mist.png";
 import humidityImg from "../image/humidity.png";
 import windImg from "../image/wind.png";
 import errorImg from "../image/lost-connection.png";
+import loadingGif from "../image/loading.gif";
 
 
 const Card = ({children , isLoading , weatherData , isError }) => {
@@ -51,7 +52,7 @@ const Card = ({children , isLoading , weatherData , isError }) => {
     return (
       <div className={styles.card}>
       {children}
-      <h1>loading</h1>
+      <img className={styles.loading} src={loadingGif} />
   </div>
     )
   }else {
@@ -69,14 +70,14 @@ const Card = ({children , isLoading , weatherData , isError }) => {
 					<div className={styles.cardBox}>
 						<img src={humidityImg} />
 						<div>
-							<h1>{weatherData.humidity}%</h1>
+							<h1>{weatherData.humidity}<span>%</span></h1>
 							<p>Humidity</p>
 						</div>
 					</div>
 					<div className={styles.cardBox}>
 						<img src={windImg} />
 						<div>
-							<h1>{weatherData.windSpeed} km/h</h1>
+							<h1>{weatherData.windSpeed}<span> km/h</span></h1>
 							<p>Wind Speed</p>
 						</div>
 					</div>

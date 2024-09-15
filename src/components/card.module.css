@@ -1,7 +1,7 @@
 .card {
     width: 500px;
     height: 700px;
-    background: linear-gradient(110deg , #5936b480 , #362a8480);
+    background: linear-gradient(150deg , rgb(31, 159, 251), rgb(28, 0, 212));
     border-radius: 32px;
     box-shadow: 0px 0px 23px 3px rgba(53, 46, 46, 0.063);
     padding: 30px;
@@ -46,15 +46,70 @@
 }
 .cardBox h1 {
     font-size: 2rem;
+    width: 110px;
+}
+.cardBox span {
+    font-size: 1rem;
 }
 .boxContainer {
+    width: 100%;
     margin-top: 20px;
     display: flex;
-    width: 100%;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
 }
 .errorImg {
     width: 100%;
+}
+.loading {
+    margin-bottom: 200px;
+}
+@media (max-width: 520px) {
+    .card {
+        width: 400px;
+
+    }
+    .card .weatherImg {
+        width: 200px;
+    }
+    .temp {
+        font-size: 4rem;
+    }
+   .boxContainer {
+    gap: 0;
+   }
+   .errorImg {
+    margin-bottom: 100px;
+   }
+}
+@media (max-width: 420px) {
+    .card {
+        width: 350px;
+
+    }
+    .card .weatherImg {
+        width: 200px;
+    }
+    .temp {
+        font-size: 4rem;
+    }
+    .cardBox h1 {
+        width: 90px;
+        font-size: 1.5rem;
+    }
+    .cardBox img {
+        width: 50px;
+        height: 35px;
+    }
+    .cardBox span {
+        font-size: .8rem;
+    }
+   .boxContainer {
+    width: 100%;
+   }
+   .errorImg {
+    margin-bottom: 100px;
+   }
+   
 }
